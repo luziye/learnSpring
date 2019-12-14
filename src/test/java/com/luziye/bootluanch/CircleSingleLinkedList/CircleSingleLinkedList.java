@@ -89,7 +89,36 @@ public class CircleSingleLinkedList<T> implements CircleSingleLinkedListInterfac
 
     @Override
     public Node deleteEnd() {
-        return null;
+        if (isEmpty()){
+            throw new RuntimeException("链表为空");
+        }
+        if (this.length==1){
+            Node<T> tmp=this.end;
+            this.start=null;
+            this.end=null;
+            this.length--;
+            return tmp;
+        }
+//        Node<T> current=this.start;
+//        Node<T> nextNode=current.next;
+//        while (nextNode!=this.end){
+//            current=current.next;
+//            nextNode=nextNode.next;
+//        }
+//        nextNode.next=null;
+//        current.next=this.start;
+//        this.end=current;
+//        this.length--;
+//        return nextNode;
+        Node<T> current=this.start;
+        Node<T> endNode=this.end;
+        for (int i=1;i<this.length-1;i++){
+            current=current.next;
+        }
+        current.next=this.start;
+        this.end=current;
+        this.length--;
+        return endNode;
     }
 
     @Override
@@ -99,16 +128,32 @@ public class CircleSingleLinkedList<T> implements CircleSingleLinkedListInterfac
 
     @Override
     public Node getHead() {
-        return null;
+        return this.start;
     }
 
     @Override
     public Node getEnd() {
-        return null;
+        return this.end;
     }
 
     @Override
     public Node get(int position) {
+        if (isEmpty()){
+            throw new RuntimeException("链表为空");
+        }
+        if (position<0||position>=this.length){
+            throw new IndexOutOfBoundsException("越界了");
+        }
+        if (position==0){
+            return getHead();
+        }
+        Node<T> current=this.start;
+        for(int i=1;i<this.length;i++){
+            if (i==position){
+                return current.next;
+            }
+            current=current.next;
+        }
         return null;
     }
 
