@@ -1,4 +1,4 @@
-package com.luziye.bootluanch;
+package com.luziye.bootluanch.Queue;
 
 public interface QueueInterface<T> {
     void add(T t);

@@ -1,4 +1,4 @@
-package com.luziye.bootluanch;
+package com.luziye.bootluanch.Stack;
 
 public interface LuStack<T> {
     void add(T t);

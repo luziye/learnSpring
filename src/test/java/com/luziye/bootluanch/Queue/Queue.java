@@ -1,6 +1,4 @@
-package com.luziye.bootluanch;
-
-import java.util.Objects;
+package com.luziye.bootluanch.Queue;
 
 public class Queue<T> implements QueueInterface<T> {
     private T[] data;

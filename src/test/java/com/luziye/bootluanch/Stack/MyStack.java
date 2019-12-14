@@ -1,4 +1,4 @@
-package com.luziye.bootluanch;
+package com.luziye.bootluanch.Stack;
 
 public class MyStack<T> implements LuStack<T> {
     private int size;
