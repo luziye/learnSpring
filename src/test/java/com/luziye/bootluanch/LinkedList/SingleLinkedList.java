@@ -66,22 +66,26 @@ public class SingleLinkedList<T> implements SingleLinkedListInterface<T> {
     }
 
     @Override
-    public void deleteEnd() {
+    public Node<T> deleteEnd() {
         if (isEmpty()) {
             throw new RuntimeException("没有数据，删除失败");
         }
         if (this.length == 1) {
+            Node<T> deletenode=this.start;
             this.end = null;
             this.start = null;
             this.length = 0;
+            return deletenode;
         }
         Node<T> currentNode = this.start;
+        Node<T> tmp=this.end;
         while (currentNode.next != this.end) {
             currentNode = currentNode.next;
         }
         currentNode.next = null;
         this.length--;
         this.end = currentNode;
+        return tmp;
     }
 
     @Override
@@ -89,22 +93,21 @@ public class SingleLinkedList<T> implements SingleLinkedListInterface<T> {
         if (isEmpty()){
             throw new RuntimeException("没有可以删除的");
         }
-        if (position > this.length || position < 0) {
+        if (position >= this.length || position < 0) {
             throw new IndexOutOfBoundsException("越界");
         }
-        if (this.length == 0) {
+        if (position == 0) {
             Node<T> tmp=this.start;
-            this.start=null;
-            this.end=null;
+            this.start=tmp.next;
             this.length--;
             return tmp;
         }
         if (position == this.length-1) {
-            deleteEnd();
+            return deleteEnd();
         }
         Node<T> currentNode=this.start;
         Node<T> deleteNode=null;
-        for (int i=0;i<this.length-1;i++){
+        for (int i=1;i<this.length-1;i++){
             if (position==i){
                 deleteNode=currentNode.next;
                 currentNode.next=deleteNode.next;

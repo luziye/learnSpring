@@ -9,16 +9,17 @@ public class testDemo {
         stringSingleLinkedList.insert("b");
         stringSingleLinkedList.insert("c");
         stringSingleLinkedList.insert("d");
-//        System.out.println("-----------");
+        System.out.println("-----------");
 //        stringSingleLinkedList.insertHead("head");
 //        System.out.println("-----------");
 //        stringSingleLinkedList.insert("aka", 2);
 //        stringSingleLinkedList.display();
 //        System.out.println("-----------");
-//        stringSingleLinkedList.deleteEnd();
-        stringSingleLinkedList.display();
+//        Node<String> node= stringSingleLinkedList.deleteEnd();
+//        System.out.println(node.data.toString());
+//        stringSingleLinkedList.display();
         System.out.println("-----------");
-        Node de=stringSingleLinkedList.delete(2);
+        Node de=stringSingleLinkedList.delete(3);
         System.out.println("deleted node is:"+de.data.toString());
         stringSingleLinkedList.display();
 
