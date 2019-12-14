@@ -13,13 +13,13 @@ public class SingleLinkedList<T> implements SingleLinkedListInterface<T> {
 
     @Override
     public Node<T> insert(T data) {
-        Node<T> newNode=new Node<T>(data);
-        if (isEmpty()){
-            this.start=newNode;
-            this.end=newNode;
-        }else {
-            this.end.next=newNode;
-            this.end=newNode;
+        Node<T> newNode = new Node<T>(data);
+        if (isEmpty()) {
+            this.start = newNode;
+            this.end = newNode;
+        } else {
+            this.end.next = newNode;
+            this.end = newNode;
         }
         this.length++;
         return newNode;
@@ -27,13 +27,13 @@ public class SingleLinkedList<T> implements SingleLinkedListInterface<T> {
 
     @Override
     public Node<T> insertHead(T data) {
-        Node<T> newNode=new Node<T>(data);
-        if (isEmpty()){
-            this.start=newNode;
-            this.end=newNode;
-        }else {
-            newNode.next=this.start;
-            this.start=newNode;
+        Node<T> newNode = new Node<T>(data);
+        if (isEmpty()) {
+            this.start = newNode;
+            this.end = newNode;
+        } else {
+            newNode.next = this.start;
+            this.start = newNode;
         }
         this.length++;
         return newNode;
@@ -41,25 +41,25 @@ public class SingleLinkedList<T> implements SingleLinkedListInterface<T> {
 
     @Override
     public Node<T> insert(T data, int position) {
-        if (position>this.length||position<0){
+        if (position > this.length || position < 0) {
             throw new IndexOutOfBoundsException("越界");
         }
-        if (position==0){
+        if (position == 0) {
             insertHead(data);
         }
-        if (position==this.length){
+        if (position == this.length) {
             insert(data);
         }
-        Node<T> newNode=new Node<T>(data);
-        Node<T> currentNode=this.start;
-        for (int i=1;i<this.length;i++){
-            if (position==i){
-                Node<T> nextNode=currentNode.next;
-                currentNode.next=newNode;
-                newNode.next=nextNode;
+        Node<T> newNode = new Node<T>(data);
+        Node<T> currentNode = this.start;
+        for (int i = 1; i < this.length; i++) {
+            if (position == i) {
+                Node<T> nextNode = currentNode.next;
+                currentNode.next = newNode;
+                newNode.next = nextNode;
                 break;
             }
-            currentNode=currentNode.next;
+            currentNode = currentNode.next;
         }
         this.length++;
         return newNode;
@@ -67,26 +67,53 @@ public class SingleLinkedList<T> implements SingleLinkedListInterface<T> {
 
     @Override
     public void deleteEnd() {
-        if (isEmpty()){
+        if (isEmpty()) {
             throw new RuntimeException("没有数据，删除失败");
         }
-        if (this.length==1){
-            this.end=null;
-            this.start=null;
-            this.length=0;
+        if (this.length == 1) {
+            this.end = null;
+            this.start = null;
+            this.length = 0;
         }
-        Node<T> currentNode=this.start;
-        while (currentNode!=this.end){
-            currentNode=currentNode.next;
+        Node<T> currentNode = this.start;
+        while (currentNode.next != this.end) {
+            currentNode = currentNode.next;
         }
-        currentNode.next=null;
+        currentNode.next = null;
         this.length--;
-        this.end=currentNode;
+        this.end = currentNode;
     }
 
     @Override
     public Node<T> delete(int position) {
-        return null;
+        if (isEmpty()){
+            throw new RuntimeException("没有可以删除的");
+        }
+        if (position > this.length || position < 0) {
+            throw new IndexOutOfBoundsException("越界");
+        }
+        if (this.length == 0) {
+            Node<T> tmp=this.start;
+            this.start=null;
+            this.end=null;
+            this.length--;
+            return tmp;
+        }
+        if (position == this.length-1) {
+            deleteEnd();
+        }
+        Node<T> currentNode=this.start;
+        Node<T> deleteNode=null;
+        for (int i=0;i<this.length-1;i++){
+            if (position==i){
+                deleteNode=currentNode.next;
+                currentNode.next=deleteNode.next;
+                break;
+            }
+            currentNode=currentNode.next;
+        }
+        this.length--;
+        return deleteNode;
     }
 
     @Override
@@ -101,18 +128,18 @@ public class SingleLinkedList<T> implements SingleLinkedListInterface<T> {
 
     @Override
     public boolean isEmpty() {
-        return this.length==0;
+        return this.length == 0;
     }
 
     @Override
     public void display() {
-        if (this.length==0){
+        if (this.length == 0) {
             System.out.println("没有数据");
         }
-        Node<T> currentnode=this.start;
-        for (int i=0;i<this.length;i++){
+        Node<T> currentnode = this.start;
+        for (int i = 0; i < this.length; i++) {
             System.out.println(currentnode.data.toString());
-            currentnode=currentnode.next;
+            currentnode = currentnode.next;
         }
     }
 
