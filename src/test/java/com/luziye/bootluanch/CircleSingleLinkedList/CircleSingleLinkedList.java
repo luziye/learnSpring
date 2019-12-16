@@ -123,7 +123,27 @@ public class CircleSingleLinkedList<T> implements CircleSingleLinkedListInterfac
 
     @Override
     public Node delete(int position) {
-        return null;
+        if (isEmpty()){
+            throw new RuntimeException("链表为空");
+        }
+        if (position<0||position>=this.length){
+            throw new IndexOutOfBoundsException("越界了");
+        }
+        if (position==0){
+            return deleteHead();
+        }
+        Node<T> current=this.start;
+        Node<T> delete=null;
+        for (int i=1;i<this.length;i++){
+            if (i==position){
+                delete=current.next;
+                current.next=delete.next;
+                length--;
+                break;
+            }
+            current=current.next;
+        }
+        return delete;
     }
 
     @Override
