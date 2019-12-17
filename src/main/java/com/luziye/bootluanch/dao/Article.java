@@ -9,18 +9,13 @@ import java.util.List;
 
 @Data
 @Builder
-@JsonPropertyOrder(value = {"content","title"})
 public class Article {
-    @JsonIgnore
     private Long  id;
-    @JsonProperty("auther")
+    @JsonProperty("aaa")
     private String author;
     private String title;
 
     private String content;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date createTime;
-    private List<Reader> reader;
 
+    private Date createTime;
 }

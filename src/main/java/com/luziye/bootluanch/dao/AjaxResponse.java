@@ -62,5 +62,4 @@ public class AjaxResponse {
     public void setData(Object data) {
         this.data = data;
     }
-    // getter / setter 略
 }

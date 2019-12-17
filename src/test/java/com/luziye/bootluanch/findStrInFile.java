@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class findStrInFile {
     public static void main(String[] args) {
-//        System.out.println(getAppearCount("abcsabcskdacabcbcabc", "abc"));
+        System.out.println(getAppearCount("abc", "abc"));
     }
 
     public static int getFile(File f, String str) {
