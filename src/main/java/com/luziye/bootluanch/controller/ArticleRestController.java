@@ -17,10 +17,10 @@ public class ArticleRestController {
 
     //增加一篇Article ，使用POST方法
     @RequestMapping(value = "/article", method = RequestMethod.POST, produces = "application/json")
-    public AjaxResponse saveArticle(@RequestBody Article2 article) {
+    public AjaxResponse saveArticle(@RequestBody Article2 article2) {
         //因为使用了lombok的Slf4j注解，这里可以直接使用log变量打印日志
-        log.info("saveArticle：{}", article);
-        return AjaxResponse.success(article);
+        log.info("saveArticle：{}", article2);
+        return AjaxResponse.success(article2);
     }
 
 

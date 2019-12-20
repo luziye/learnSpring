@@ -1,6 +1,8 @@
 package com.luziye.bootluanch.controller;
 
 import com.luziye.bootluanch.dao.Article2;
+import com.luziye.bootluanch.dao.yml.Family;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,6 +11,9 @@ import java.util.List;
 
 @RestController
 public class HelloController {
+    @Autowired
+    Family family;
+
     @RequestMapping("/hello")
     public  String hello(String name){
         Article2.ReaderBean readerBean=Article2.ReaderBean.builder().age(10).name("xulele").build();
@@ -23,5 +28,11 @@ public class HelloController {
                 .reader(list)
                 .build();
         return "hello world"+article2;
+    }
+
+    @RequestMapping("/test1")
+    public String test(){
+
+        return family.toString();
     }
 }

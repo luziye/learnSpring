@@ -1,15 +1,19 @@
 package com.luziye.bootluanch.dao;
 
 import com.fasterxml.jackson.annotation.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Article {
+    @JsonIgnore
     private Long  id;
     @JsonProperty("aaa")
     private String author;
@@ -18,4 +22,5 @@ public class Article {
     private String content;
 
     private Date createTime;
+
 }
