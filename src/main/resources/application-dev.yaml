@@ -1,7 +1,24 @@
-
 server:
   port: 8080
 spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/test1?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 111111111
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  quartz:
+    job-store-type: JDBC #数据库存储quartz任务配置
+    jdbc:
+      initialize-schema: NEVER #自动初始化表结构，第一次启动的时候这里写always
+#mybatis:
+#  mapper-locations: classpath:generator/*.xml
+logging:
+  level:
+    com.luziye.bootluanch: debug
+
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
