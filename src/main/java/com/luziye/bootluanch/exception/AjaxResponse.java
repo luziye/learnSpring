@@ -1,6 +1,5 @@
 package com.luziye.bootluanch.exception;
 
-import org.hibernate.type.CustomType;
 
 public class AjaxResponse {
 
